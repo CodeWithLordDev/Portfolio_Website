@@ -9,27 +9,28 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
     const navigate = useNavigate();
 
-  const handleNavigation = () => {
-    navigate("/projects"); // Replace with the actual route to your ProjectPage
-  };
-  const handleNavigationContact = () => {
-    navigate("/contact"); // Replace with the actual route to your ProjectPage
-  };
+    const handleNavigation = () => {
+        navigate("/projects"); // Replace with the actual route to your ProjectPage
+    };
+    const handleNavigationContact = () => {
+        navigate("/contact"); // Replace with the actual route to your ProjectPage
+    };
     return (
-        <div className="relative w-full h-[calc(100vh-4.5rem)] text-white overflow-hidden">
+        <div className="relative w-full h-[calc(100vh-3rem)] text-[#1E1E1E] dark:text-white overflow-hidden">
             <div className="relative z-10 flex flex-col items-center h-full justify-center text-center md:flex-row md:text-left">
                 {/* Text Section */}
-                <div className="space-y-5 md:w-1/2 flex flex-col justify-center h-full px-5">
+                <div className=" md:w-1/2 flex flex-col justify-center  px-5">
                     <motion.h1
                         className="text-4xl font-extrabold sm:text-6xl"
                         initial={{ opacity: 0, y: -50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
                     >
-                    Hi, I'm <span className="text-blue-300 ">Ayush Rajesh Temkar</span>
+                        {/* bg-gradient-to-r from-[#00FFD1] to-[#3A86FF] */}
+                    Hi, I'm <span className=" dark:text-[#E0E0E0] text-[#474747] ">Ayush Rajesh Temkar</span>
                     </motion.h1>
                     <motion.p
-                        className="text-lg md:text-xl"
+                        className="text-lg md:text-xl dark:text-[#B0B0B0] text-[#585757] "
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5 }}
@@ -43,10 +44,10 @@ const Hero = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 1 }}
                     >
-                        <button onClick={handleNavigation}  className="px-6 py-3 text-white bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
+                        <button onClick={handleNavigation}  className="px-6 py-3 bg-[#00FFD1] text-[#16213E] rounded-md shadow-lg  hover:shadow-[0_0_15px_#00FFD1] transition-all duration-300">
                             View My Work
                         </button>
-                        <button onClick={handleNavigationContact} className="px-6 py-3 text-blue-500 bg-white rounded-md shadow-lg hover:bg-gray-100">
+                        <button onClick={handleNavigationContact} className="px-6 py-3 border-[#00FFD1] text-[#00FFD1] rounded-md shadow-lg hover:bg-[#00FFD1] hover:text-[#16213E] transition-all duration-300">
                             Hire Me
                         </button>
                     </motion.div>

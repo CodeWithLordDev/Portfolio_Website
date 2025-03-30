@@ -48,8 +48,8 @@ const ContactPage = () => {
 
   return (
     <>
-      <StarsBackground />
-      <ShootingStars />
+      {/* <StarsBackground />
+      <ShootingStars /> */}
       <section className="text-gray-600 h-[78vh] body-font relative">
         <div className="container px-5 py-5 mx-auto">
           <motion.div
@@ -58,8 +58,8 @@ const ContactPage = () => {
             transition={{ duration: 1, delay: 1 }}
             className="flex flex-col text-center w-full mb-12"
           >
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-slate-300">Contact Us</h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-700 dark:text-[#FFFFFF]">Contact Us</h1>
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-600 dark:text-[#B0B0B0]">
               Feel free to reach out to us for any inquiries or collaborations. We’re here to help you with your needs.
             </p>
           </motion.div>
@@ -73,14 +73,14 @@ const ContactPage = () => {
                 className="p-2 w-1/2"
               >
                 <div className="relative">
-                  <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
+                  <label htmlFor="name" className="leading-7 text-sm text-gray-600 dark:text-[#B0B0B0]">Name</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-600 dark:bg-gray-100 bg-opacity-50 rounded border border-gray-400 dark:border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 dark:text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </motion.div>
@@ -92,14 +92,14 @@ const ContactPage = () => {
                 className="p-2 w-1/2"
               >
                 <div className="relative">
-                  <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
+                  <label htmlFor="email" className="leading-7 text-sm text-gray-600 dark:text-[#B0B0B0]">Email</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-600 dark:bg-gray-100 bg-opacity-50 rounded border border-gray-400 dark:border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 dark:text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </motion.div>
@@ -111,13 +111,13 @@ const ContactPage = () => {
                 className="p-2 w-full"
               >
                 <div className="relative">
-                  <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
+                  <label htmlFor="message" className="leading-7 text-sm text-gray-600 dark:text-[#B0B0B0]">Message</label>
                   <textarea
                     id="message"
                     name="message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-gray-600 darK:bg-gray-100 bg-opacity-50 rounded border border-gray-400 dark:border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-600 dark:text-gray-400 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     spellCheck="false"
                   ></textarea>
                 </div>
@@ -131,7 +131,7 @@ const ContactPage = () => {
               >
                 <button
                   onClick={handleSubmit}
-                  className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  className="flex mx-auto text-gray-700 dark:text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                 >
                   {isSending ? 'Sending...' : 'Submit'}
                 </button>
@@ -144,7 +144,7 @@ const ContactPage = () => {
                   transition={{ duration: 1, delay: 1 }}
                   className="p-2 w-full pt-8 mt-8 text-center"
                 >
-                  <p className="text-lg text-gray-600">{statusMessage}</p>
+                  <p className="text-lg text-gray-600 dark:text-[#B0B0B0]">{statusMessage}</p>
                 </motion.div>
               )}
             </div>

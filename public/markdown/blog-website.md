@@ -1,3 +1,4 @@
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 ---
 description: A blog website created using Next.js, featuring a homepage, blog posts, and a contact page. It also serves as a portfolio website.
 ---
@@ -13,7 +14,7 @@ description: A blog website created using Next.js, featuring a homepage, blog po
 - ***React***
 - ***Tailwind CSS***
 
-# Setup for Next.js Blog Website
+# Setup for Next.js Blog Websit
 
 1. Create a Next.js app
 

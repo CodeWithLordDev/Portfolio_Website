@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-
+import { motion } from "framer-motion";
 const TiltGlareCard = ({ onClick, image, title, description }) => {
 
   const cardRef = useRef(null);
@@ -40,15 +40,29 @@ const TiltGlareCard = ({ onClick, image, title, description }) => {
   };
 
   return (
-    <div
+    <motion.div
+    initial={{
+            opacity:0,
+            x:-80
+          }}
+    whileInView={{
+      opacity:1,
+      x:0,
+    }}
+    transition={{
+      duration:3
+    }}
+    viewport={{ once: true }}
+
       ref={cardRef}
-      className="w-full h-96 relative rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 bg-[#020927]"
+      className="w-full h-96 relative rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 bg-gray-800 dark:bg-[#1E1E1E]"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       {/* Card Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <img
+        
           src={image}
           alt={title || "Card Image"}
           className="w-full h-full object-contain "
@@ -60,11 +74,43 @@ const TiltGlareCard = ({ onClick, image, title, description }) => {
         className="absolute inset-0 pointer-events-none rounded-lg"
       ></div>
       {/* Card Content */}
-      <div className="absolute bottom-4 left-4 text-white z-10 " onClick={onClick}>
-        <h2 className="text-lg  text-slate-500 font-bold">{title || "Card Title"}</h2>
-        <p className="text-sm">{description || "Card description goes here."}</p>
+      <div className="absolute bottom-4 left-4 text-gray-500 dark:text-white z-10 " onClick={onClick}>
+        <motion.h2 
+        initial={{
+          opacity:0,
+          x:-150
+        }
+        }
+        whileInView={{
+          opacity:1,
+          x:0
+        }}
+        transition={{
+          duration:3,
+          delay:0.5
+        }}
+        viewport={{ once: true }}
+
+        className="text-lg text-gray:400 dark:text-slate-500 font-bold">{title || "Card Title"}</motion.h2>
+        <motion.p 
+        initial={{
+          opacity:0,
+          x:-150
+        }
+        }
+        whileInView={{
+          opacity:1,
+          x:0
+        }}
+        transition={{
+          duration:3,
+          delay:1
+        }}
+        viewport={{ once: true }}
+
+        className="text-sm text-gray-300">{description || "Card description goes here."}</motion.p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

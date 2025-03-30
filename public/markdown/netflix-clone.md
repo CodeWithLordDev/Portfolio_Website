@@ -23,7 +23,8 @@
     </head>
     <body>
         <div class="nav">
-            <img class="nav__logo" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+            <img class="nav__logo" src="https://upload.wikimedia.org/wikipedia/com
+                mons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
         </div>
 
         <div class="banner">

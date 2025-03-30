@@ -3,3 +3,27 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Serif+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Prociono&family=Rubik+Vinyl&family=Rubik+Wet+Paint&family=Satisfy&display=swap');
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Adjust width */
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* Subtle transparent effect */
+    backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* Gradient for aesthetic look */
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Handle on Hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+}

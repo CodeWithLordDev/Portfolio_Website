@@ -5,16 +5,16 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="relative h-screen w-full bg-slate-950">
+    <div className="relative w-full  ">
       {/* Background Layer */}
-      <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"></div>
+      <div className=""></div>
 
       {/* Content */}
 
-      <div className="relative z-10">
-        <Navbar classNamw="bg-[#020617]" />
+      <div className="relative z-10 bg-slate-200 dark:bg-[#0a0a0a] ">
+        <Navbar classNamw="" />
         {children}
-        <Footer className="bottom-0"/>
+        <Footer className="bottom-0 border-t-2 border-white"/>
 
       </div>
     </div>

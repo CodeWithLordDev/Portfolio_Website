@@ -7,7 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeDocument from "rehype-document";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { selectProjectBySlug } from "../store/projectsSlice";
@@ -16,30 +16,28 @@ import { StarsBackground } from "../components/ui/stars-background";
 import { ShootingStars } from "../components/ui/shooting-stars";
 
 const ProjectDetailPage = () => {
-  const { slug } = useParams();  // Getting the slug parameter from the URL
+  const { slug } = useParams();
   const [markdownContent, setMarkdownContent] = useState("");
-  const selectProject = selectProjectBySlug(slug);  // State to store markdown content
+  const selectProject = selectProjectBySlug(slug);
   const project = useSelector(selectProject);
-  
-  // Unified processor to parse and process markdown
+
   const processor = unified()
-    .use(remarkParse)  // Parse markdown
-    .use(remarkRehype)  // Convert markdown to HTML
-    .use(rehypeDocument, { title: "Project" })  // Document wrapper
-    .use(rehypeFormat)  // Format the HTML output
-    .use(rehypeStringify)  // Convert HTML to string
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeDocument, { title: "Project" })
+    .use(rehypeFormat)
+    .use(rehypeStringify)
     .use(rehypePrettyCode, {
-      theme: "github-dark",  // Choose a theme for syntax highlighting
-      lineNumbers: true,  // Enable line numbers for code blocks
+      theme: "github-dark",
+      lineNumbers: true,
       transformers: [
         transformerCopyButton({
-          visibility: "always",  // Always show copy button for code
-          feedbackDuration: 3000,  // Show feedback for 3 seconds after copying
+          visibility: "always",
+          feedbackDuration: 3000,
         }),
       ],
     });
 
-  // Process markdown content to HTML
   const processMarkdownContent = async (content) => {
     if (content) {
       const htmlContent = (await processor.process(content)).toString();
@@ -48,38 +46,53 @@ const ProjectDetailPage = () => {
   };
 
   useEffect(() => {
-    // Fetch markdown file based on the slug
     fetch(`/markdown/${slug}.md`)
       .then((response) => response.text())
-      .then((text) => {
-        processMarkdownContent(text);  // Process and set markdown content
-      })
+      .then((text) => processMarkdownContent(text))
       .catch((error) => console.error("Error loading markdown:", error));
   }, [slug]);
 
   return (
     <>
-    <StarsBackground />
-    <ShootingStars />
-    <div className="p-8 bg-[#020617] text-white min-h-screen">
-      <motion.h1
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1, delay: 1 }} 
-       className="text-4xl font-bold mb-4">Project Detail</motion.h1>
-      <img src={project.image} alt={project.title} className="rounded-lg mb-8" />
-      <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-      <h2 className="text-2xl text-gray-400 mb-6">{project.subheading}</h2>
-      <motion.div 
-       initial={{ opacity: 0, scale: 0.8 }}
-       animate={{ opacity: 1, scale: 1 }}
-       transition={{ duration: 1, delay: 1 }}
-       className="prose prose-invert">
-        {/* Render markdown content as HTML */}
-        <div dangerouslySetInnerHTML={{ __html: markdownContent }}
-         />
-      </motion.div>
-    </div>
+      {/* <StarsBackground />
+      <ShootingStars /> */}
+      <div className="min-h-screen flex flex-col items-center text-white p-4 md:p-8">
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="text-3xl text-neutral-700 dark:text-white md:text-5xl font-bold mb-6 text-center"
+        >
+          Project Detail
+        </motion.h1>
+
+        <div className="max-w-screen-lg w-full px-4 md:px-8">
+          {/* Project Image */}
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full max-w-3xl mx-auto rounded-lg shadow-lg object-cover mb-6"
+          />
+
+          {/* Project Title & Subheading */}
+          <h1 className="text-2xl md:text-4xl text-neutral-600 dark:text-gray-300 font-bold mb-3 text-center">
+            {project.title}
+          </h1>
+          <h2 className="text-lg md:text-2xl text-neutral-500 dark:text-gray-400 text-center mb-8">
+            {project.subheading}
+          </h2>
+
+          {/* Markdown Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="prose prose-invert prose-lg md:prose-xl w-full text-gray-600 dark:text-white max-w-3xl mx-auto space-y-4"
+          >
+            <div dangerouslySetInnerHTML={{ __html: markdownContent }} />
+          </motion.div>
+        </div>
+      </div>
     </>
   );
 };

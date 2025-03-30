@@ -10,17 +10,16 @@ import Footer from "../components/Footer";
 const HomePage = () => {
     
     return (
-        <div className="flex flex-col min-h-[200vh] "> 
-            <StarsBackground/>
-            <ShootingStars/>
+        <div className="flex flex-col "> 
+            {/* <StarsBackground/>
+            <ShootingStars/> */}
             <div className="flex flex-col flex-grow"> 
-                <Hero className="min-h-[80vh]" />
+                <Hero className="" />
+                <div className="seperation h-[0.5px] bg-slate-300"></div>
                 <About/>
-                <ProjectPage/>
+                <div className="seperation h-[0.5px] bg-slate-300"></div>
+               <ProjectPage/>
             </div>
-            
-            
-
         </div>
     );
 };
